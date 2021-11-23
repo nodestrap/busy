@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/busy",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Indicates a loading state of page.",
   "type": "module",
   "main": "dist/Busy.jsx",
