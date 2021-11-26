@@ -98,19 +98,14 @@ export function Busy(props) {
     // styles:
     const sheet = useBusySheet();
     // jsx:
-    return (<Badge 
-    // other props:
-    {...props} 
-    // accessibilities:
-    label={props.label ?? 'Loading...'} 
-    // appearances:
-    nude={props.nude ?? true} badgeStyle={props.badgeStyle ?? 'circle'} outlined={props.outlined ?? true} 
-    // classes:
-    mainClass={props.mainClass ?? sheet.main}>
-            <Icon icon='busy' size='1em'/>
-            {((props.children ?? false) !== false) && <VisuallyHidden>
-                {props.children}
-            </VisuallyHidden>}
-        </Badge>);
+    return (React.createElement(Badge, { ...props, 
+        // accessibilities:
+        label: props.label ?? 'Loading...', 
+        // appearances:
+        nude: props.nude ?? true, badgeStyle: props.badgeStyle ?? 'circle', outlined: props.outlined ?? true, 
+        // classes:
+        mainClass: props.mainClass ?? sheet.main },
+        React.createElement(Icon, { icon: 'busy', size: '1em' }),
+        ((props.children ?? false) !== false) && React.createElement(VisuallyHidden, null, props.children)));
 }
 export { Busy as default };
