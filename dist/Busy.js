@@ -3,9 +3,9 @@ import { default as React, } from 'react'; // base technology of our nodestrap c
 // cssfn:
 import { 
 // compositions:
-composition, mainComposition, imports, 
-// layouts:
-layout, } from '@cssfn/cssfn'; // cssfn core
+mainComposition, 
+// styles:
+style, imports, } from '@cssfn/cssfn'; // cssfn core
 import { 
 // hooks:
 createUseSheet, } from '@cssfn/react-cssfn'; // cssfn for react
@@ -27,54 +27,50 @@ import {
 usesBadgeLayout, usesBadgeVariants, usesBadgeStates, Badge, } from '@nodestrap/badge';
 // styles:
 export const usesBusyLayout = () => {
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // layouts:
             usesBadgeLayout(),
         ]),
-        layout({
+        ...style({
             // customize:
             ...usesGeneralProps(cssProps), // apply general cssProps
         }),
-    ]);
+    });
 };
 export const usesBusyVariants = () => {
     // dependencies:
     // layouts:
-    const [sizes] = usesSizeVariant((sizeName) => composition([
-        layout({
-            // overwrites propName = propName{SizeName}:
-            ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
-        }),
-    ]));
-    return composition([
-        imports([
+    const [sizes] = usesSizeVariant((sizeName) => style({
+        // overwrites propName = propName{SizeName}:
+        ...overwriteProps(cssDecls, usesSuffixedProps(cssProps, sizeName)),
+    }));
+    return style({
+        ...imports([
             // variants:
             usesBadgeVariants(),
             // layouts:
             sizes(),
         ]),
-    ]);
+    });
 };
 export const usesBusyStates = () => {
-    return composition([
-        imports([
+    return style({
+        ...imports([
             // states:
             usesBadgeStates(),
         ]),
-    ]);
+    });
 };
 export const useBusySheet = createUseSheet(() => [
-    mainComposition([
-        imports([
-            // layouts:
-            usesBusyLayout(),
-            // variants:
-            usesBusyVariants(),
-            // states:
-            usesBusyStates(),
-        ]),
-    ]),
+    mainComposition(imports([
+        // layouts:
+        usesBusyLayout(),
+        // variants:
+        usesBusyVariants(),
+        // states:
+        usesBusyStates(),
+    ])),
 ], /*sheetId :*/ 'y6oksyrdiq'); // an unique salt for SSR support, ensures the server-side & client-side have the same generated class names
 // configs:
 export const [cssProps, cssDecls, cssVals, cssConfig] = createCssConfig(() => {

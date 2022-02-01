@@ -1,8 +1,8 @@
 /// <reference types="react" />
 import { PopupPlacement, PopupModifier, PopupPosition, BadgeProps } from '@nodestrap/badge';
-export declare const usesBusyLayout: () => import("@cssfn/cssfn").StyleCollection;
-export declare const usesBusyVariants: () => import("@cssfn/cssfn").StyleCollection;
-export declare const usesBusyStates: () => import("@cssfn/cssfn").StyleCollection;
+export declare const usesBusyLayout: () => import("@cssfn/cssfn").Rule;
+export declare const usesBusyVariants: () => import("@cssfn/cssfn").Rule;
+export declare const usesBusyStates: () => import("@cssfn/cssfn").Rule;
 export declare const useBusySheet: import("@cssfn/types").Factory<import("jss").Classes<"main">>;
 export declare const cssProps: import("@cssfn/css-config").Refs<{
     fontSizeSm: (string | number)[][];
