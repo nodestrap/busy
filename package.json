@@ -1,6 +1,6 @@
 {
   "name": "@nodestrap/busy",
-  "version": "4.0.4",
+  "version": "4.0.5",
   "description": "Indicates a loading state of page.",
   "type": "module",
   "main": "dist/Busy.js",
@@ -29,13 +29,14 @@
   "homepage": "https://github.com/nodestrap/busy#readme",
   "dependencies": {
     "@cssfn/css-config": "^1.0.4",
-    "@cssfn/cssfn": "^1.0.11",
+    "@cssfn/cssfn": "^1.0.12",
     "@cssfn/react-cssfn": "^1.0.11",
+    "@cssfn/types": "^1.0.4",
     "@nodestrap/badge": "^4.0.4",
     "@nodestrap/basic": "^4.0.7",
     "@nodestrap/icon": "^4.0.9",
-    "@nodestrap/visually-hidden": "^4.0.4",
-    "@types/react": "^17.0.38",
+    "@nodestrap/visually-hidden": "^4.0.5",
+    "@types/react": "^17.0.39",
     "react": "^17.0.2"
   }
 }

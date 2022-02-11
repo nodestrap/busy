@@ -1,6 +1,5 @@
 // react:
 import { default as React, } from 'react'; // base technology of our nodestrap components
-// cssfn:
 import { 
 // compositions:
 mainComposition, 
@@ -90,18 +89,36 @@ export const [cssProps, cssDecls, cssVals, cssConfig] = createCssConfig(() => {
         //#endregion indicators
     };
 }, { prefix: 'busy' });
+// utilities:
+const isText = (children) => {
+    if (['string', 'number'].includes(typeof (children)))
+        return true;
+    if (Array.isArray(children) && children.every((child) => ['string', 'number'].includes(typeof (child))))
+        return true;
+    return false;
+};
 export function Busy(props) {
     // styles:
     const sheet = useBusySheet();
+    // rest props:
+    let { 
+    // accessibilities:
+    label, 
+    // children:
+    children, ...restProps } = props;
+    if ((!label) && isText(children)) {
+        label = [children].flat().join('');
+        children = undefined;
+    } // if
     // jsx:
-    return (React.createElement(Badge, { ...props, 
+    return (React.createElement(Badge, { ...restProps, 
         // accessibilities:
-        label: props.label ?? 'Loading...', 
+        label: label ?? 'Loading...', 
         // appearances:
         nude: props.nude ?? true, badgeStyle: props.badgeStyle ?? 'circle', outlined: props.outlined ?? true, 
         // classes:
         mainClass: props.mainClass ?? sheet.main },
         React.createElement(Icon, { icon: 'busy', size: '1em' }),
-        ((props.children ?? false) !== false) && React.createElement(VisuallyHidden, null, props.children)));
+        children && React.createElement(VisuallyHidden, null, children)));
 }
 export { Busy as default };
